@@ -1,0 +1,21 @@
+1.In this problem statement we will find the average fare of each class.
+create table titanic(PassengerId int, Survived int, Pclass int,Name string, Sex string, Age int, SibSp int, Parch int, Ticket string, Fare int, Cabin string, Embarked string) row format delimited fields terminated by ',' stored as textfile;
+
+load data local inpath '/home/jayant/Downloads/TitanicData.txt' into table titanic;
+
+select AVG(fare), Pclass from titanic group by Pclass;
+ 
+
+
+2.In this problem statement we will find the number of people alive in are embarked in Southampton.
+select Pclass,SUM(Survived) from titanic where Embarked=='Southampton' group by Pclass;
+
+
+
+3.In this problem statement we will find out number of male and female people died in each class.
+select Pclass, SUM(Survived) from titanic where Sex = 'Male' or 'Female' and Survived =0 group by Pclass;
+
+
+
+
+
